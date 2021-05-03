@@ -1,0 +1,34 @@
+{
+    "products": [
+        {
+            "title": "Small Rubber Wallet",
+            "product_type": "Wallet",
+            "variants": [
+                { "title": "Blue", "price": 29.33 },
+                { "title": "Turquoise", "price": 18.50 }
+            ]
+        },
+        {
+            "title": "Sleek Cotton Shoes",
+            "product_type": "Shoes",
+            "variants": [
+                { "title": "Sky Blue", "price": 20.00 }
+            ]
+        },
+        {
+            "title": "Intelligent Cotton Wallet",
+            "product_type": "Wallet",
+            "variants": [
+                { "title": "White", "price": 17.97 }
+            ]
+        },
+        {
+            "title": "Enormous Leather Lamp",
+            "product_type": "Lamp",
+            "variants": [
+                { "title": "Azure", "price": 65.99 },
+                { "title": "Salmon", "price": 1.66 }
+            ]
+        }
+    ]
+}
