@@ -10,3 +10,9 @@ $shifts = [
     'Warehouse_B2',
     'Shipping_Dave_A6',
 ];
+
+$parts = collect($shifts)->map(function ($shift) {
+    return collect(explode('_', $shift))->last();
+});
+
+dd($parts);
