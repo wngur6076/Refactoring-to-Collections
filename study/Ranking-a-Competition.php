@@ -13,6 +13,26 @@ $scores = collect([
     ['score' => 82, 'team' => 'H'],
 ]);
 
+$scores = $scores->sortByDesc('score')
+    ->zip(range(1, $scores->count()))
+    ->map(function ($scoreAndRank) {
+        list($score, $rank) = $scoreAndRank;
+        return array_merge(['rank' => $rank], $score);
+    });
+    
+var_dump($scores->groupBy('score')
+    ->map(function ($tiedScores) {
+        $lowestRank = $tiedScores->pluck('rank')->min();
+        return $tiedScores->map(function ($rankedScore) use ($lowestRank) {
+            return array_merge($rankedScore, [
+                'rank' => $lowestRank,
+            ]);
+        });
+    })
+    ->collapse()
+    ->sortBy('rank')
+    ->toArray());
+
 //  결과
 [
     ['rank' => 1, 'score' => 91, 'team' => 'E'],
