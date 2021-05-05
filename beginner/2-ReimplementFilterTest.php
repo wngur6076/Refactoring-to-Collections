@@ -6,10 +6,15 @@ class ReimplementFilterTest extends TestCase
 {
     private function filter($items, $callback)
     {
-        /*
-         * Your implementation goes here! Use loops, variables, whatever
-         * you want, the only rule is you can't use `array_filter`!
-         */
+        $result = [];
+
+        foreach ($items as $item) {
+            if ($callback($item)) {
+                $result[] = $item;
+            }
+        }
+
+        return $result;
     }
 
     public function test_remove_odd_numbers()
