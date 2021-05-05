@@ -6,20 +6,22 @@ class UsingReduceTest extends TestCase
 {
     private function reduce($items, $callback, $initial)
     {
-        /*
-         * Copy your implementation from Exercise 3 here!
-         */
+        $result = $initial;
+        
+        foreach ($items as $item) {
+            $result = $callback($result, $item);
+        }
+
+        return $result;
     }
 
     public function test_calculate_the_product_of_a_list_of_numbers()
     {
         $numbers = [1, 2, 3, 4, 5, 6];
 
-        /*
-         * Add your solution here! Remember, no loops allowed!
-         *
-         * $product = $this->reduce($numbers, ...)
-         */
+        $product = $this->reduce($numbers, function ($sum, $number) {
+            return $sum * $number;
+        }, 1);
 
         $this->assertEquals(720, $product);
     }
@@ -32,11 +34,9 @@ class UsingReduceTest extends TestCase
             ['name' => 'Dana', 'email' => 'dana@example.com'],
         ];
 
-        /*
-         * Add your solution here! Remember, no loops allowed!
-         *
-         * $emailLookup = $this->reduce($users, ...)
-         */
+        $emailLookup = $this->reduce($users, function ($result, $user) {
+            return $result += array($user['name'] => $user['email']); 
+        }, []);
 
         $this->assertEquals([
             'John' => 'john@example.com',
@@ -56,11 +56,12 @@ class UsingReduceTest extends TestCase
             ['name' => 'Kyle', 'department' => 'Engineering'],
         ];
 
-        /*
-         * Add your solution here! Remember, no loops allowed!
-         *
-         * $departmentCounts = $this->reduce($employees, ...)
-         */
+        $departmentCounts = $this->reduce($employees, function ($result, $employee) {
+            if (array_key_exists($employee['department'], $result)) {
+                $result[$employee['department']]++;
+            }
+            return $result += [$employee['department'] => 1];
+        }, []);
 
         $this->assertEquals([
             'Sales' => 1,
