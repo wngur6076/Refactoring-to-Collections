@@ -6,10 +6,13 @@ class ReimplementReduceTest extends TestCase
 {
     private function reduce($items, $callback, $initial)
     {
-        /*
-         * Your implementation goes here! Use loops, variables, whatever
-         * you want, the only rule is you can't use `array_reduce`!
-         */
+        $result = $initial;
+        
+        foreach ($items as $item) {
+            $result = $callback($result, $item);
+        }
+
+        return $result;
     }
 
     public function test_add_numbers()
