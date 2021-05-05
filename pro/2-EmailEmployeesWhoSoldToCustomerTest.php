@@ -1,6 +1,9 @@
 <?php
 
-class EmailEmployeesWhoSoldToCustomerTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+
+class EmailEmployeesWhoSoldToCustomerTest extends TestCase
 {
     private function emailTo($employees, $customer)
     {

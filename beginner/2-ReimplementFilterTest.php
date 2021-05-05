@@ -1,6 +1,8 @@
 <?php
 
-class ReimplementFilterTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ReimplementFilterTest extends TestCase
 {
     private function filter($items, $callback)
     {

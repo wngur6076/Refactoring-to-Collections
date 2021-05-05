@@ -1,6 +1,8 @@
 <?php
 
-class UsingMapTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class UsingMapTest extends TestCase
 {
     private function map($items, $callback)
     {

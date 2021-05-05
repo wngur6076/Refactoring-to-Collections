@@ -1,6 +1,8 @@
 <?php
 
-class EmployeesBornOnSpecificWeekdayTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class EmployeesBornOnSpecificWeekdayTest extends TestCase
 {
     private function employeesBornOn($employees, $day)
     {

@@ -1,6 +1,9 @@
 <?php
 
-class CommentsByUserTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+
+class CommentsByUserTest extends TestCase
 {
     private function countCommentsFor($posts, $user)
     {

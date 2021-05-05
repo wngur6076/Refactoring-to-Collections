@@ -1,6 +1,8 @@
 <?php
 
-class ReimplementReduceTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ReimplementReduceTest extends TestCase
 {
     private function reduce($items, $callback, $initial)
     {

@@ -1,6 +1,8 @@
 <?php
 
-class UsingFilterTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class UsingFilterTest extends TestCase
 {
     private function filter($items, $callback)
     {

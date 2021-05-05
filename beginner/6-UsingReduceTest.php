@@ -1,6 +1,8 @@
 <?php
 
-class UsingReduceTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class UsingReduceTest extends TestCase
 {
     private function reduce($items, $callback, $initial)
     {

@@ -1,13 +1,16 @@
 <?php
 
-class ReimplementMapTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ReimplementMapTest extends TestCase
 {
     private function map($items, $callback)
     {
-        /*
-         * Your implementation goes here! Use loops, variables, whatever
-         * you want, the only rule is you can't use `array_map`!
-         */
+        $result = [];
+        foreach ($items as $item) {
+            $result[] = $callback($item);
+        }
+        return $result;
     }
 
     public function test_double_each_number()

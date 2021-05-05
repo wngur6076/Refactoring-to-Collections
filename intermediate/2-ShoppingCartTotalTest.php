@@ -1,6 +1,9 @@
 <?php
 
-class ShoppingCartTotalTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+
+class ShoppingCartTotalTest extends TestCase
 {
     public function test()
     {

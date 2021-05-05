@@ -1,6 +1,9 @@
 <?php
 
-class MostValuableCustomerTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+
+class MostValuableCustomerTest extends TestCase
 {
     public function test()
     {
