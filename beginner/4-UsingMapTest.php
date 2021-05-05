@@ -6,9 +6,11 @@ class UsingMapTest extends TestCase
 {
     private function map($items, $callback)
     {
-        /*
-         * Copy your implementation from Exercise 1 here!
-         */
+        $result = [];
+        foreach ($items as $item) {
+            $result[] = $callback($item);
+        }
+        return $result;
     }
 
     public function test_get_employee_names()
@@ -22,11 +24,12 @@ class UsingMapTest extends TestCase
             ['name' => 'Kyle', 'department' => 'Engineering'],
         ];
 
-        /*
-         * Add your solution here! Remember, no loops allowed!
-         *
-         * $employeeNames = $this->map($employees, ...)
-         */
+        
+        
+        $employeeNames = $this->map($employees, function ($employee) {
+            return $employee['name'];
+        });
+        
 
         $this->assertEquals([
             'John',
@@ -48,11 +51,9 @@ class UsingMapTest extends TestCase
             new DateTime('2007-08-09'),
         ];
 
-        /*
-         * Add your solution here! Remember, no loops allowed!
-         *
-         * $years = $this->map($dates, ...)
-         */
+        $years = $this->map($dates, function ($date) {
+            return $date->format('Y');
+        });
 
         $this->assertEquals([
             '2015',
@@ -75,11 +76,9 @@ class UsingMapTest extends TestCase
             785,
         ];
 
-        /*
-         * Add your solution here! Remember, no loops allowed!
-         *
-         * $displayPrices = $this->map($pricesInCents, ...)
-         */
+        $displayPrices = $this->map($pricesInCents, function ($pricesInCent) {
+            return '$'.number_format($pricesInCent / 100, 2);
+        });
 
         $this->assertEquals([
             '$0.79',
