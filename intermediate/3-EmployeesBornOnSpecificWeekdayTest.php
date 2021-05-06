@@ -6,16 +6,10 @@ class EmployeesBornOnSpecificWeekdayTest extends TestCase
 {
     private function employeesBornOn($employees, $day)
     {
-        /*
-         * Write a collection pipeline that find all of the employees born
-         * on a specific day of the week (Monday, Tuesday, Wednesday, etc.)
-         *
-         * Do not use any loops, if statements, or ternary operators.
-         *
-         * Good luck!
-         *
-         * return $employees->...
-         */
+        $week_w = array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
+        return $employees->filter(function ($employee) use ($day, $week_w) {
+            return $week_w[date('w', strtotime($employee['date_of_birth']))] === $day;
+        })->values();
     }
 
     public function test()
