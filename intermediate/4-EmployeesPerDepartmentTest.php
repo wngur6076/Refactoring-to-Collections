@@ -18,16 +18,13 @@ class EmployeesPerDepartmentTest extends TestCase
             ['name' => 'Joe',   'department' => 'Marketing',    'email' => 'joe5@example.com'],
         ]);
 
-        /*
-         * Write a collection pipeline that returns an associative array that
-         * shows how many employees are in each department.
-         *
-         * Do not use any loops, if statements, or ternary operators.
-         *
-         * Good luck!
-         *
-         * $departmentCounts = $employees->...
-         */
+        $departmentCounts = $employees->reduce(function ($result, $employee) {
+            if (! isset($result[$employee['department']])) {
+                $result[$employee['department']] = 0;
+            }
+            $result[$employee['department']] += 1;
+            return $result;
+        }, collect());
 
         $this->assertEquals([
             'Sales' => 2,
