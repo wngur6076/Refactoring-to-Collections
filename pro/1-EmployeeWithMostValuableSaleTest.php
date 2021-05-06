@@ -36,8 +36,8 @@ class EmployeeWithMostValuableSaleTest extends TestCase
                 ],
             ],
         ]);
-        // 순서대로 하고 -> 1번째만 필터
         
+        // 순서대로 하고 -> 1번째만 필터
         $employeeWithMostValuableSale = $employees->map(function ($employee) {
             return array_merge($employee, ['sales_total' => collect($employee['sales'])->sum('order_total')]);
         })->sortByDesc('sales_total')

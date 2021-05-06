@@ -7,17 +7,13 @@ class EmailEmployeesWhoSoldToCustomerTest extends TestCase
 {
     private function emailTo($employees, $customer)
     {
-        /*
-         * Write a collection pipeline that can find all of the employees
-         * who made sales to a given customer, and generate a "To" line
-         * that could be used to email those employees.
-         *
-         * Do not use any loops, if statements, or ternary operators.
-         *
-         * Good luck!
-         *
-         * return $employees->...
-         */
+        $emails = $employees->filter(function ($employee) use ($customer) {
+            return collect($employee['sales'])->pluck('customer')->contains($customer);
+        })->reduce(function ($result, $employee) {
+            return $result.$employee['email'].',';
+        }, '');
+        
+        return rtrim($emails, ',');
     }
 
     public function test()
