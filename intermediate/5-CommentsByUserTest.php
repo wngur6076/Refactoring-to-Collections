@@ -7,16 +7,11 @@ class CommentsByUserTest extends TestCase
 {
     private function countCommentsFor($posts, $user)
     {
-        /*
-         * Write a collection pipeline that can find the total number of
-         * comments posted by a given user on a collection of posts.
-         *
-         * Do not use any loops, if statements, or ternary operators.
-         *
-         * Good luck!
-         *
-         * return $posts->...
-         */
+        return $posts->flatmap(function ($post) {
+            return $post['comments'];
+        })->filter(function ($comment) use ($user) {
+            return $comment['user'] === $user;
+        })->count();
     }
 
     public function test()
