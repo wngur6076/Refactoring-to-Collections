@@ -36,17 +36,12 @@ class EmployeeWithMostValuableSaleTest extends TestCase
                 ],
             ],
         ]);
-
-        /*
-         * Using collection pipeline programming, find the employee who made
-         * the most valuable sale.
-         *
-         * Do not use any loops, if statements, or ternary operators.
-         *
-         * Good luck!
-         *
-         * $employeeWithMostValuableSale = $employees->...
-         */
+        // 순서대로 하고 -> 1번째만 필터
+        
+        $employeeWithMostValuableSale = $employees->map(function ($employee) {
+            return array_merge($employee, ['sales_total' => collect($employee['sales'])->sum('order_total')]);
+        })->sortByDesc('sales_total')
+        ->first();
 
         $this->assertEquals($employeeWithMostValuableSale['name'], 'Jane');
     }
