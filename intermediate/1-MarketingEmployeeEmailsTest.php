@@ -15,16 +15,11 @@ class MarketingEmployeeEmailsTest extends TestCase
             ['name' => 'Kyle', 'department' => 'Engineering', 'email' => 'kyle8@example.com'],
         ]);
 
-        /*
-         * Write a collection pipeline that returns just the email addresses
-         * of every employee in the marketing department.
-         *
-         * Do not use any loops, if statements, or ternary operators.
-         *
-         * Good luck!
-         *
-         * $emails = $employees->...
-         */
+        $emails = $employees->filter(function ($employee) {
+            return $employee['department'] === 'Marketing';
+        })->map(function ($marketingEmployee) {
+            return $marketingEmployee['email'];
+        })->values();
 
         $this->assertEquals([
             'jane8@example.com',
