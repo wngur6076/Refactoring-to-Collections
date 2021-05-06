@@ -32,3 +32,26 @@ I've included my solutions to the exercises in a separate folder for you to comp
 
 Good luck!
 – Adam
+
+## 컬렉션 자주 사용하는 모음
+
+* "Tell Don't Ask" style? Certainly”
+* 2번째 인자는 대부분 예외 시 디폴트값임.
+
+* flatten: flatten 메소드는 다차원으로 구성된 컬렉션을 한 차원으로 변경
+* map: 모든 원소의 변형이 일어나면 사용
+* filter:  모든 원소 중에서 조건에서 몇 가지 원소를 가져오려면 사용
+* reject: 필터 반대
+* pluck: 간단하게 원소들을 가져올 때 map 대신 사용
+* get: 원소 중 가져옴, 2번째 인자 예외값이라 사용하기 편함
+* contains: 모든 원소 중 원하는 검사가 존재하는지 체크
+* last: 마지막 원소 가져옴
+* frist: 첫 번째 원소 가져옴
+* reduce: 원소들의 합계 구할 때 유용, 지도 작업 중에 키를 사용자 지정하려는 문제
+* reserve: 원소 반대로 정렬
+* values: 원소i값 재배치
+* zip: 두 개의 원소를 압축(합친다)
+* each: 컬렉션 원소를 foreach 순회
+* transpose: [1, 2, 3],[4, 5, 6],[7,8,9] => [1, 4, 7],[2, 5, 8],[3, 6, 9]
+* groupBy: 그룹별로 배열에 묶어줌.
+* collapse: 10 => [1, 2, 3] 여기서 10을 없애준다.
