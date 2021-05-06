@@ -55,17 +55,18 @@ class MostValuableCustomerTest extends TestCase
             ],
         ]);
 
-        /*
-         * Using collection pipeline programming, find the customer whose combined
-         * total order value is the highest.
-         *
-         * Do not use any loops, if statements, or ternary operators.
-         *
-         * Good luck!
-         *
-         * $mostValuableCustomer = $employees->...
-         */
-
+        $mostValuableCustomer = $employees
+            ->pluck('sales')
+            ->flatten(1)
+            ->groupBy('customer')
+            ->map(function ($groupedSales) {
+                return $groupedSales->sum('order_total');
+            })
+            ->sort()
+            ->reverse()
+            ->keys()
+            ->first();
+            
         $this->assertEquals('Yellow Cake', $mostValuableCustomer);
     }
 }
