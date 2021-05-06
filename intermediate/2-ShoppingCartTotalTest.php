@@ -16,16 +16,9 @@ class ShoppingCartTotalTest extends TestCase
             ['product' => 'Bread',   'unit_price' => 229,  'quantity' => 2],
         ]);
 
-        /*
-         * Write a collection pipeline that calculates the total price of
-         * all the items in this shopping cart.
-         *
-         * Do not use any loops, if statements, or ternary operators.
-         *
-         * Good luck!
-         *
-         * $totalPrice = $shoppingCart->...
-         */
+        $totalPrice = $shoppingCart->reduce(function ($total, $item) {
+            return $total += $item['unit_price'] * $item['quantity'];
+        });
 
         $this->assertEquals(3097, $totalPrice);
     }
